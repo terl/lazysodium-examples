@@ -36,8 +36,7 @@ Thumbs.db
 
 # IntelliJ  #
 ################
-.idea/*
-!.idea/copyright/Terl_Tech_Ltd___MPLv2.xml
+.idea
 *.ipr
 *.iws
 *.iml
