@@ -11,10 +11,17 @@ mainClassName = "com.goterl.lazycode.Main"
 
 repositories {
     mavenCentral()
+    maven {
+        url  "https://dl.bintray.com/terl/lazysodium-maven"
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation "com.goterl.lazycode:lazysodium-java:2.6.0"
+    implementation "net.java.dev.jna:jna:4.5.1"
+
 }

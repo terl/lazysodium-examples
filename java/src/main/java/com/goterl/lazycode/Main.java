@@ -1,5 +1,9 @@
 package com.goterl.lazycode;
 
+import com.goterl.lazycode.lazysodium.LazySodiumJava;
+import com.goterl.lazycode.lazysodium.SodiumJava;
+import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
+import com.goterl.lazycode.lazysodium.interfaces.GenericHash;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 
@@ -7,6 +11,7 @@ import org.fusesource.jansi.AnsiConsole;
 import static org.fusesource.jansi.Ansi.ansi;
 
 public class Main {
+
 
     public static void main(String[] args) {
         // First setup
@@ -43,7 +48,7 @@ public class Main {
 
         log();
         log(line);
-        log("        Lazysodium for Java Examples       ");
+        log("      Lazysodium for Java (Examples)       ");
         log(line);
         log();
     }
@@ -58,18 +63,67 @@ public class Main {
 
 
 
+
+
     private Integer parsed;
+    private final LazySodiumJava lazySodium;
 
     public Main(Integer parsed) {
         this.parsed = parsed;
+        lazySodium = new LazySodiumJava(new SodiumJava());
     }
 
 
-    public void run() {
-
+    public void run() throws SodiumException {
+        if (parsed == 3) {
+            genericHashStep1();
+            genericHashStep2();
+        }
     }
 
 
+    private void genericHashStep1() throws SodiumException {
+        log(" ");
+        log(" >>> Running generic hash.");
+        log(" ");
+
+        // We can generate a random key or
+        // we can provide a key.
+        // String randomKey = lazySodium.cryptoGenericHashKeygen();
+
+        // Key must be larger than GenericHash.KEYBYTES_MIN
+        // but less than GenericHash.KEYBYTES_MAX
+        String key = "AKeyThatsLongerThan16Bytes";
+
+        log("+ Step 1: Deterministic key hash.");
+        log("  The following hashes should be the same as we're using" +
+                " identical keys for them.");
+        log("  We will be using the key '" + key + "'.");
+
+        String hash = lazySodium.cryptoGenericHash("", key);
+        String hash2 = lazySodium.cryptoGenericHash("", key);
+        log();
+        log("   Hash 1: " + hash);
+        log("   Hash 2: " + hash2);
+        log("   Hash 1 == Hash 2? " + hash.equalsIgnoreCase(hash2));
+        log();
+
+    }
+
+    private void genericHashStep2() throws SodiumException {
+        log("+ Step 2: Random key hash.");
+        log("  The following hashes should be different as we're using" +
+                " random keys for them.");
+
+        String hashRandom = lazySodium.cryptoGenericHash("", lazySodium.cryptoGenericHashKeygen());
+        String hashRandom2 = lazySodium.cryptoGenericHash("", lazySodium.cryptoGenericHashKeygen());
+        log();
+        log("   Hash 1: " + hashRandom);
+        log("   Hash 2: " + hashRandom2);
+        log("   Hash 1 == Hash 2? " + hashRandom.equalsIgnoreCase(hashRandom2));
+        log();
+
+    }
 
 
     // Helpers
