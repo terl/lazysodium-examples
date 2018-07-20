@@ -3,7 +3,7 @@
 	<string name="text_intro">
 		Lazysodium is an effortless and easy-to-use open-source cryptography library for Java and Android.
 		It\'s based on Libsodium, which is an excellent audited open-source C cryptography library.
-		This app's purpose is to show you the capabilities of Lazysodium for Android and Libsodium.
+		\n\nThis app\'s purpose is to show you the capabilities of Lazysodium for Android and Libsodium.
 	</string>
 
 	<string name="symmetric_intro">

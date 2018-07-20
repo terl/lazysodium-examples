@@ -19,7 +19,9 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".operation_acts.SymmetricEncryptionActivity"
-		          android:parentActivityName=".MainActivity" />
+		          android:theme="@style/AppTheme.NoActionBar.White"
+		          android:parentActivityName=".MainActivity"
+				  android:windowSoftInputMode="stateAlwaysHidden"/>
 	</application>
 
 </manifest>

@@ -21,7 +21,16 @@
 
 	<color name="snow">#ededed</color>
 	<color name="snowD1">#d9d9d9</color>
+	<color name="snowD2">#d4d4d4</color>
+	<color name="snowD3">#cacaca</color>
+	<color name="snowD4">#c2c2c2</color>
+	<color name="snowD5">#bcbcbc</color>
 
+	<color name="grayL5">#9c9c9c</color>
+	<color name="grayL4">#939393</color>
+	<color name="grayL3">#8b8b8b</color>
+	<color name="grayL2">#818181</color>
+	<color name="grayL1">#7b7b7b</color>
 	<color name="gray">#707070</color>
 
 	<color name="black">#000</color>
