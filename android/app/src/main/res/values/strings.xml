@@ -1,0 +1,14 @@
+<resources>
+	<string name="app_name">Lazysodium Examples</string>
+	<string name="text_intro">
+		Lazysodium is an effortless and easy-to-use open-source cryptography library for Java and Android.
+		It\'s based on Libsodium, which is an excellent audited open-source C cryptography library.
+		This app's purpose is to show you the capabilities of Lazysodium for Android and Libsodium.
+	</string>
+
+	<string name="symmetric_intro">
+		Symmetric key encryption means that you encrypt and decrypt a message
+		using one key. It\'s faster and less complicated than asymmetric
+		key encryption, which usually requires at least 4 keys.
+	</string>
+</resources>
