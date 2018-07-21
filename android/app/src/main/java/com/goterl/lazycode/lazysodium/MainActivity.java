@@ -1,20 +1,25 @@
 package com.goterl.lazycode.lazysodium;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import com.goterl.lazycode.lazysodium.adapters.OperationAdapter;
 import com.goterl.lazycode.lazysodium.models.Operation;
 import com.goterl.lazycode.lazysodium.operation_acts.SymmetricEncryptionActivity;
+import io.codetail.animation.ViewAnimationUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +28,15 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
 
     private static final String TAG = "MainActivity";
     private OperationAdapter adapter;
+    private View overlay;
+    private MotionEvent lastTouch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        overlay = findViewById(R.id.overlay);
 
         List<Operation> operationList = new ArrayList<>();
         Operation symmetricEnc = new Operation(
@@ -83,12 +92,74 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
     public void onItemClick(View view, int position) {
         if (position == 0) {
             Log.e(TAG, "Clicked!");
-            openActivity(SymmetricEncryptionActivity.class);
+            openActivity(view, SymmetricEncryptionActivity.class);
         }
     }
 
-    private <T extends AppCompatActivity> void openActivity(final Class<T> activityClass) {
+    private <T extends AppCompatActivity> void openActivity(final View view, final Class<T> activityClass) {
+        int[] coords = getCenterOfView(view);
+
+        int startRadius = 0;
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int endRadius = height;
+
+        Animator anim =
+                ViewAnimationUtils.createCircularReveal(overlay, coords[0], coords[1], startRadius, endRadius);
+        anim.setDuration(200L);
+        anim.setStartDelay(0L);
+        overlay.setVisibility(View.VISIBLE);
+        anim.start();
+
+        // Start activity with a fade in
+        fadeInActivity(activityClass);
+    }
+
+    private <T extends AppCompatActivity> void fadeInActivity(Class<T> activityClass) {
+        ActivityOptionsCompat anim = ActivityOptionsCompat.makeCustomAnimation(this, android.R.anim.fade_in, android.R.anim.fade_out);
+        Bundle bundle = anim.toBundle();
         Intent intent = new Intent(this, activityClass);
-        startActivity(intent);
+        startActivity(intent, bundle);
+    }
+
+    private int[] getCenterOfView(final View view) {
+        int [] location = new int[2];
+        view.getLocationOnScreen(location);
+        int x = location[0];
+        int y = location[1];
+        float centreX = x + view.getWidth() / 2;
+        float centreY = y + view.getHeight() / 2;
+        return new int[] {(int) centreX, (int) centreY};
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (overlay != null && overlay.getVisibility() == View.VISIBLE) {
+            Animation fadeOut = new AlphaAnimation(1, 0);
+            fadeOut.setInterpolator(new AccelerateInterpolator());
+            overlay.startAnimation(fadeOut);
+            fadeOut.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    if (overlay != null) {
+                        overlay.setVisibility(View.GONE);
+                    }
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+        }
     }
 }

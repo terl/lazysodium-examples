@@ -98,4 +98,9 @@ public class SymmetricEncryptionActivity extends AppCompatActivity implements Te
         }
     }
 
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(0, android.R.anim.fade_out);
+    }
 }

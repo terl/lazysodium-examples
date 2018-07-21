@@ -1,93 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+
+<io.codetail.widget.RevealFrameLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
-		android:focusableInTouchMode="true"
-		android:focusable="true"
-		android:background="@color/colorAccentL5"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:fitsSystemWindows="true"
-		tools:context="com.goterl.lazycode.lazysodium.MainActivity">
+		android:layout_height="match_parent">
 
+	<android.support.v4.widget.NestedScrollView
+			android:focusableInTouchMode="true"
+			android:focusable="true"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:fitsSystemWindows="true"
+			tools:context="com.goterl.lazycode.lazysodium.MainActivity">
 
-	<LinearLayout android:layout_width="match_parent"
-	              android:orientation="vertical"
-	              android:paddingTop="20dp"
-	              android:layout_height="wrap_content">
 
 		<LinearLayout android:layout_width="match_parent"
-		              android:layout_height="wrap_content"
-		              android:padding="30dp"
-		              android:paddingStart="40dp"
-		              android:paddingEnd="40dp"
-		              android:orientation="vertical">
-
-
-			<android.support.v7.widget.AppCompatImageView
-					android:layout_width="190dp"
-					android:layout_gravity="start"
-					android:scaleType="fitCenter"
-					android:layout_height="100dp"
-					android:src="@drawable/large_logo"/>
-
-
-			<TextView android:layout_width="match_parent"
-			          android:layout_height="wrap_content"
-			          android:layout_gravity="center_horizontal"
-			          android:textColor="@color/black"
-			          android:gravity="start"
-			          android:textSize="16sp"
-			          android:layout_marginTop="8dp"
-			          android:text="@string/text_intro" />
-
+		              android:orientation="vertical"
+		              android:paddingTop="20dp"
+		              android:layout_height="wrap_content">
 
 			<LinearLayout android:layout_width="match_parent"
 			              android:layout_height="wrap_content"
-			              android:gravity="center_horizontal"
-			              android:layout_gravity="center_horizontal"
-			              android:layout_marginTop="44dp"
-			              android:orientation="horizontal">
+			              android:padding="30dp"
+			              android:paddingStart="40dp"
+			              android:paddingEnd="40dp"
+			              android:orientation="vertical">
 
-				<View android:background="@drawable/circle_primary"
-				      android:layout_width="6dp"
-				      android:layout_height="6dp" />
 
-				<View android:background="@drawable/circle_primary"
-				      android:layout_marginStart="12dp"
-				      android:layout_marginLeft="12dp"
-				      android:layout_width="6dp"
-				      android:layout_height="6dp" />
+				<android.support.v7.widget.AppCompatImageView
+						android:layout_width="190dp"
+						android:layout_gravity="start"
+						android:scaleType="fitCenter"
+						android:layout_height="100dp"
+						android:src="@drawable/large_logo"/>
 
-				<View android:background="@drawable/circle_primary"
-				      android:layout_marginStart="12dp"
-				      android:layout_marginLeft="12dp"
-				      android:layout_width="6dp"
-				      android:layout_height="6dp" />
+
+				<TextView android:layout_width="match_parent"
+				          android:layout_height="wrap_content"
+				          android:layout_gravity="center_horizontal"
+				          android:textColor="@color/black"
+				          android:gravity="start"
+				          android:textSize="16sp"
+				          android:layout_marginTop="8dp"
+				          android:text="@string/text_intro"/>
+
+
+				<LinearLayout android:layout_width="match_parent"
+				              android:layout_height="wrap_content"
+				              android:gravity="center_horizontal"
+				              android:layout_gravity="center_horizontal"
+				              android:layout_marginTop="44dp"
+				              android:orientation="horizontal">
+
+					<View android:background="@drawable/circle_primary"
+					      android:layout_width="6dp"
+					      android:layout_height="6dp"/>
+
+					<View android:background="@drawable/circle_primary"
+					      android:layout_marginStart="12dp"
+					      android:layout_marginLeft="12dp"
+					      android:layout_width="6dp"
+					      android:layout_height="6dp"/>
+
+					<View android:background="@drawable/circle_primary"
+					      android:layout_marginStart="12dp"
+					      android:layout_marginLeft="12dp"
+					      android:layout_width="6dp"
+					      android:layout_height="6dp"/>
+
+				</LinearLayout>
+
 
 			</LinearLayout>
 
 
+			<android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+			                                        android:id="@+id/list"
+			                                        android:layout_marginTop="12dp"
+			                                        android:paddingStart="12dp"
+			                                        android:paddingEnd="12dp"
+			                                        android:paddingLeft="12dp"
+			                                        android:paddingRight="12dp"
+			                                        android:orientation="vertical"
+			                                        android:layout_height="wrap_content">
+
+			</android.support.v7.widget.RecyclerView>
+
+
 		</LinearLayout>
+	</android.support.v4.widget.NestedScrollView>
 
-
-
-		<android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-		                                        android:id="@+id/list"
-		                                        android:layout_marginTop="12dp"
-		                                        android:paddingStart="12dp"
-		                                        android:paddingEnd="12dp"
-		                                        android:paddingLeft="12dp"
-		                                        android:paddingRight="12dp"
-		                                        android:orientation="vertical"
-		                                        android:layout_height="wrap_content">
-
-		</android.support.v7.widget.RecyclerView>
-
-
-	</LinearLayout>
-
-
-
-
-</android.support.v4.widget.NestedScrollView>
+	<View android:layout_width="match_parent"
+	      android:layout_height="match_parent"
+	      android:visibility="gone"
+	      android:background="@color/colorPrimary"
+	      android:id="@+id/overlay" />
+</io.codetail.widget.RevealFrameLayout>
