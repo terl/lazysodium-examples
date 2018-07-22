@@ -26,6 +26,20 @@
 		          android:theme="@style/AppTheme.NoActionBar.White"
 		          android:parentActivityName=".MainActivity"
 		          android:windowSoftInputMode="stateAlwaysHidden"/>
+		<activity android:name=".operation_acts.GenericHashActivity"
+		          android:theme="@style/AppTheme.NoActionBar.White"
+		          android:parentActivityName=".MainActivity"
+		          android:windowSoftInputMode="stateAlwaysHidden"/>
+
+		<activity android:name=".operation_acts.PasswordHashActivity"
+		          android:theme="@style/AppTheme.NoActionBar.White"
+		          android:parentActivityName=".MainActivity"
+		          android:windowSoftInputMode="stateAlwaysHidden"/>
+
+		<activity android:name=".operation_acts.KeyDerivationActivity"
+		          android:theme="@style/AppTheme.NoActionBar.White"
+		          android:parentActivityName=".MainActivity"
+		          android:windowSoftInputMode="stateAlwaysHidden"/>
 	</application>
 
 </manifest>

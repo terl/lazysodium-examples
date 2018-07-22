@@ -7,6 +7,7 @@
 		android:layout_height="match_parent">
 
 	<android.support.v4.widget.NestedScrollView
+			android:background="@color/colorPrimaryD2"
 			android:focusableInTouchMode="true"
 			android:focusable="true"
 			android:layout_width="match_parent"
@@ -17,67 +18,61 @@
 
 		<LinearLayout android:layout_width="match_parent"
 		              android:orientation="vertical"
-		              android:paddingTop="20dp"
+		              android:padding="12dp"
 		              android:layout_height="wrap_content">
 
-			<LinearLayout android:layout_width="match_parent"
-			              android:layout_height="wrap_content"
-			              android:padding="30dp"
-			              android:paddingStart="40dp"
-			              android:paddingEnd="40dp"
-			              android:orientation="vertical">
+
+			<android.support.v7.widget.AppCompatImageView
+					android:layout_width="190dp"
+					android:layout_marginTop="22dp"
+					android:layout_marginBottom="10dp"
+					android:layout_gravity="center_horizontal"
+					android:scaleType="fitCenter"
+					android:tint="@color/white"
+					android:layout_height="100dp"
+					android:src="@drawable/large_logo"/>
 
 
-				<android.support.v7.widget.AppCompatImageView
-						android:layout_width="190dp"
-						android:layout_gravity="start"
-						android:scaleType="fitCenter"
-						android:layout_height="100dp"
-						android:src="@drawable/large_logo"/>
 
-
-				<TextView android:layout_width="match_parent"
-				          android:layout_height="wrap_content"
-				          android:layout_gravity="center_horizontal"
-				          android:textColor="@color/black"
-				          android:gravity="start"
-				          android:textSize="16sp"
-				          android:layout_marginTop="8dp"
-				          android:text="@string/text_intro"/>
+			<android.support.v7.widget.CardView
+					xmlns:card_view="http://schemas.android.com/apk/res-auto"
+					android:foreground="?selectableItemBackground"
+					android:layout_margin="4dp"
+					android:id="@+id/card_view"
+					android:layout_gravity="center"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:maxWidth="300dp"
+					card_view:cardBackgroundColor="@color/snow"
+					card_view:cardUseCompatPadding="true"
+					card_view:cardElevation="1dp"
+					card_view:cardCornerRadius="6dp"
+					card_view:contentPadding="28dp">
 
 
 				<LinearLayout android:layout_width="match_parent"
 				              android:layout_height="wrap_content"
-				              android:gravity="center_horizontal"
-				              android:layout_gravity="center_horizontal"
-				              android:layout_marginTop="44dp"
-				              android:orientation="horizontal">
+				              android:orientation="vertical">
 
-					<View android:background="@drawable/circle_primary"
-					      android:layout_width="6dp"
-					      android:layout_height="6dp"/>
 
-					<View android:background="@drawable/circle_primary"
-					      android:layout_marginStart="12dp"
-					      android:layout_marginLeft="12dp"
-					      android:layout_width="6dp"
-					      android:layout_height="6dp"/>
+					<TextView android:layout_width="match_parent"
+					          android:layout_height="wrap_content"
+					          android:layout_gravity="center_horizontal"
+					          android:textColor="@color/black"
+					          android:gravity="start"
+					          android:textSize="16sp"
+					          android:text="@string/text_intro"/>
 
-					<View android:background="@drawable/circle_primary"
-					      android:layout_marginStart="12dp"
-					      android:layout_marginLeft="12dp"
-					      android:layout_width="6dp"
-					      android:layout_height="6dp"/>
 
 				</LinearLayout>
 
 
-			</LinearLayout>
+			</android.support.v7.widget.CardView>
 
 
 			<android.support.v7.widget.RecyclerView android:layout_width="match_parent"
 			                                        android:id="@+id/list"
-			                                        android:layout_marginTop="12dp"
+			                                        android:layout_marginTop="18dp"
 			                                        android:paddingStart="12dp"
 			                                        android:paddingEnd="12dp"
 			                                        android:paddingLeft="12dp"

@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +16,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import com.goterl.lazycode.lazysodium.adapters.OperationAdapter;
 import com.goterl.lazycode.lazysodium.models.Operation;
-import com.goterl.lazycode.lazysodium.operation_acts.AsymmetricEncryptionActivity;
-import com.goterl.lazycode.lazysodium.operation_acts.SymmetricEncryptionActivity;
+import com.goterl.lazycode.lazysodium.operation_acts.*;
 import io.codetail.animation.ViewAnimationUtils;
 
 import java.util.ArrayList;
@@ -50,6 +48,10 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
                 "Generic hashing",
                 "Hash something with the Blake2B algorithm."
         );
+        Operation passwordHashing = new Operation(
+                "Password hashing",
+                "Securely hash passwords."
+        );
         Operation keyDerivation = new Operation(
                 "Key derivation",
                 "Derive keys from a master key."
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
         operationList.add(symmetricEnc);
         operationList.add(asymmetricEnc);
         operationList.add(genericHashing);
+        operationList.add(passwordHashing);
         operationList.add(keyDerivation);
 
         RecyclerView recyclerView = findViewById(R.id.list);
@@ -94,6 +97,15 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
         }
         if (position == 1) {
             openActivity(view, AsymmetricEncryptionActivity.class);
+        }
+        if (position == 2) {
+            openActivity(view, GenericHashActivity.class);
+        }
+        if (position == 3) {
+            openActivity(view, PasswordHashActivity.class);
+        }
+        if (position == 4) {
+            openActivity(view, KeyDerivationActivity.class);
         }
     }
 

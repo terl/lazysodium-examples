@@ -4,7 +4,7 @@
 	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
 		<!-- Customize your theme here. -->
 		<item name="colorPrimary">@color/colorPrimary</item>
-		<item name="colorPrimaryDark">@color/colorPrimaryD1</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryD2</item>
 		<item name="colorAccent">@color/colorAccentL3</item>
 		<item name="android:fontFamily">@font/vision_family</item>
 		<item name="fontFamily">@font/vision_family</item>

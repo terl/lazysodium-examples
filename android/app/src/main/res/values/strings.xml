@@ -17,4 +17,20 @@
 		You can publish your keypair\'s public key to anyone and they can
 		use it to encrypt messages to you, which only you can decrypt.
 	</string>
+
+	<string name="generic_hash_intro">
+		Generic hashing hashes a given string or a file. You can supply
+		a key making a deterministic hash too.
+	</string>
+
+	<string name="pw_hash_intro">
+		Using Argon2, we can securely hash a password. Use this
+		instead of Generic Hashing to create theoretically unbreakable password hashes.
+	</string>
+
+
+	<string name="key_derivation_intro">
+		You can create several subkeys from one master key. This can
+		help with key organisation, and in some cases, security.
+	</string>
 </resources>
