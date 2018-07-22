@@ -11,20 +11,27 @@ import com.goterl.lazycode.lazysodium.models.Operation;
 
 import java.util.List;
 
-public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.ViewHolder> {
+public class MultiAdapter extends RecyclerView.Adapter<MultiAdapter.ViewHolder> {
 
     private List<Operation> data;
+    private boolean isCredits;
     private LayoutInflater inflator;
-    private ItemClickListener mClickListener;
+    private ItemClickListener clickListener;
 
-    public OperationAdapter(Context context, List<Operation> data) {
+    public MultiAdapter(Context context, List<Operation> data, boolean isCredits) {
         this.inflator = LayoutInflater.from(context);
         this.data = data;
+        this.isCredits = isCredits;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflator.inflate(R.layout.operation_item, parent, false);
+        View view = null;
+        if (isCredits) {
+            view = inflator.inflate(R.layout.credits_item, parent, false);
+        } else {
+            view = inflator.inflate(R.layout.operation_item, parent, false);
+        }
         return new ViewHolder(view);
     }
 
@@ -55,7 +62,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (clickListener != null) clickListener.onItemClick(view, getAdapterPosition());
         }
     }
 
@@ -64,7 +71,7 @@ public class OperationAdapter extends RecyclerView.Adapter<OperationAdapter.View
     }
 
     public void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
+        this.clickListener = itemClickListener;
     }
 
     public interface ItemClickListener {

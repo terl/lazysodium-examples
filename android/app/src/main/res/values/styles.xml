@@ -9,6 +9,7 @@
 		<item name="android:fontFamily">@font/vision_family</item>
 		<item name="fontFamily">@font/vision_family</item>
 		<item name="android:lineSpacingMultiplier">1.4</item>
+		<item name="android:textColor">@color/snow</item>
 	</style>
 	<style name="AppTheme.NoActionBar">
 		<item name="windowActionBar">false</item>
