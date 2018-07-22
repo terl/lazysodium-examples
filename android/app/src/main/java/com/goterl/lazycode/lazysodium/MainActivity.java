@@ -11,13 +11,13 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import com.goterl.lazycode.lazysodium.adapters.OperationAdapter;
 import com.goterl.lazycode.lazysodium.models.Operation;
+import com.goterl.lazycode.lazysodium.operation_acts.AsymmetricEncryptionActivity;
 import com.goterl.lazycode.lazysodium.operation_acts.SymmetricEncryptionActivity;
 import io.codetail.animation.ViewAnimationUtils;
 
@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
     private static final String TAG = "MainActivity";
     private OperationAdapter adapter;
     private View overlay;
-    private MotionEvent lastTouch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +90,15 @@ public class MainActivity extends AppCompatActivity implements OperationAdapter.
     @Override
     public void onItemClick(View view, int position) {
         if (position == 0) {
-            Log.e(TAG, "Clicked!");
             openActivity(view, SymmetricEncryptionActivity.class);
         }
+        if (position == 1) {
+            openActivity(view, AsymmetricEncryptionActivity.class);
+        }
     }
+
+
+
 
     private <T extends AppCompatActivity> void openActivity(final View view, final Class<T> activityClass) {
         int[] coords = getCenterOfView(view);

@@ -22,6 +22,10 @@
 		          android:theme="@style/AppTheme.NoActionBar.White"
 		          android:parentActivityName=".MainActivity"
 				  android:windowSoftInputMode="stateAlwaysHidden"/>
+		<activity android:name=".operation_acts.AsymmetricEncryptionActivity"
+		          android:theme="@style/AppTheme.NoActionBar.White"
+		          android:parentActivityName=".MainActivity"
+		          android:windowSoftInputMode="stateAlwaysHidden"/>
 	</application>
 
 </manifest>

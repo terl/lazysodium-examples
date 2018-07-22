@@ -11,4 +11,10 @@
 		using one key. It\'s faster and less complicated than asymmetric
 		key encryption, which usually requires at least 4 keys.
 	</string>
+
+	<string name="asymmetric_intro">
+		Asymmetric key encryption means you can encrypt using a public-private keypair.
+		You can publish your keypair\'s public key to anyone and they can
+		use it to encrypt messages to you, which only you can decrypt.
+	</string>
 </resources>
