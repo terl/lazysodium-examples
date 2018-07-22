@@ -1,5 +1,5 @@
 <resources>
-	<string name="app_name">Lazysodium Examples</string>
+	<string name="app_name">Lazysodium</string>
 	<string name="text_intro">
 		Lazysodium is an effortless and easy-to-use open-source cryptography library for Java and Android.
 		It\'s based on Libsodium, which is an excellent audited open-source C cryptography library.
