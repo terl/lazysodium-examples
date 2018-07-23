@@ -7,6 +7,7 @@ android {
         applicationId "com.goterl.lazycode.lazysodium"
         minSdkVersion 16
         targetSdkVersion 28
+        multiDexEnabled true
         versionCode 6
         versionName "0.4.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
