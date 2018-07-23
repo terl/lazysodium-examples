@@ -1,11 +1,11 @@
-package com.goterl.lazycode.lazysodium.widgets;
+package com.goterl.lazycode.lazysodium.example.widgets;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import com.goterl.lazycode.lazysodium.R;
+import com.goterl.lazycode.lazysodium.example.R;
 
 public class CryptoTextInputEditText extends TextInputEditText {
 

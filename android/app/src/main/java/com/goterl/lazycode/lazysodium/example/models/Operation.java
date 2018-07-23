@@ -1,4 +1,4 @@
-package com.goterl.lazycode.lazysodium.models;
+package com.goterl.lazycode.lazysodium.example.models;
 
 public class Operation {
 

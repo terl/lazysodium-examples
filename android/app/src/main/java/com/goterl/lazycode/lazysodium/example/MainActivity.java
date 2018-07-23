@@ -1,4 +1,4 @@
-package com.goterl.lazycode.lazysodium;
+package com.goterl.lazycode.lazysodium.example;
 
 import android.animation.Animator;
 import android.content.Intent;
@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import com.goterl.lazycode.lazysodium.adapters.MultiAdapter;
-import com.goterl.lazycode.lazysodium.models.Operation;
-import com.goterl.lazycode.lazysodium.operation_acts.*;
+import com.goterl.lazycode.lazysodium.example.adapters.MultiAdapter;
+import com.goterl.lazycode.lazysodium.example.models.Operation;
+import com.goterl.lazycode.lazysodium.example.operation_acts.*;
 import io.codetail.animation.ViewAnimationUtils;
 
 import java.util.ArrayList;

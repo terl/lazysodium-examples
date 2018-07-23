@@ -1,20 +1,13 @@
-package com.goterl.lazycode.lazysodium.operation_acts;
+package com.goterl.lazycode.lazysodium.example.operation_acts;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
 import com.goterl.lazycode.lazysodium.LazySodiumAndroid;
-import com.goterl.lazycode.lazysodium.R;
+import com.goterl.lazycode.lazysodium.example.R;
 import com.goterl.lazycode.lazysodium.SodiumAndroid;
-import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
-import com.goterl.lazycode.lazysodium.interfaces.SecretBox;
-import com.goterl.lazycode.lazysodium.utils.Key;
 
 public abstract class BaseActivity extends AppCompatActivity  {
 

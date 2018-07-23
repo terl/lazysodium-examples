@@ -1,4 +1,4 @@
-package com.goterl.lazycode.lazysodium.adapters;
+package com.goterl.lazycode.lazysodium.example.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.goterl.lazycode.lazysodium.R;
-import com.goterl.lazycode.lazysodium.models.Operation;
+import com.goterl.lazycode.lazysodium.example.R;
+import com.goterl.lazycode.lazysodium.example.models.Operation;
 
 import java.util.List;
 

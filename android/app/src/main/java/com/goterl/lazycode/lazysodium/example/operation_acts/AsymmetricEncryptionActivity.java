@@ -1,18 +1,15 @@
-package com.goterl.lazycode.lazysodium.operation_acts;
+package com.goterl.lazycode.lazysodium.example.operation_acts;
 
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.goterl.lazycode.lazysodium.LazySodiumAndroid;
-import com.goterl.lazycode.lazysodium.R;
+import com.goterl.lazycode.lazysodium.example.R;
 import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
 import com.goterl.lazycode.lazysodium.interfaces.Box;
 import com.goterl.lazycode.lazysodium.interfaces.SecretBox;
-import com.goterl.lazycode.lazysodium.utils.Key;
 import com.goterl.lazycode.lazysodium.utils.KeyPair;
 
 public class AsymmetricEncryptionActivity extends BaseActivity implements TextWatcher {

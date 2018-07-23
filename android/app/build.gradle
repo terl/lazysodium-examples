@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.goterl.lazycode.lazysodium"
+        applicationId "com.goterl.lazycode.lazysodium.example"
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true
@@ -33,7 +33,8 @@ dependencies {
 
     implementation "com.goterl.lazycode:lazysodium-android:3.1.0@aar"
     implementation "net.java.dev.jna:jna:4.5.1@aar"
-    implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
-        transitive = true;
-    }
+    implementation ('com.github.ozodrukh.CircularReveal:circualreveal:2.1.0', {
+        transitive = true
+        exclude group: 'com.android.support'
+    })
 }
