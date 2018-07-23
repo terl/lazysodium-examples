@@ -7,8 +7,8 @@ android {
         applicationId "com.goterl.lazycode.lazysodium"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 5
-        versionName "0.4.1"
+        versionCode 6
+        versionName "0.4.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -30,7 +30,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation "com.goterl.lazycode:lazysodium-android:3.0.1@aar"
+    implementation "com.goterl.lazycode:lazysodium-android:3.1.0@aar"
     implementation "net.java.dev.jna:jna:4.5.1@aar"
     implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
         transitive = true;
