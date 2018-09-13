@@ -5,12 +5,15 @@ import com.goterl.lazycode.lazysodium.SodiumJava;
 import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
 import com.goterl.lazycode.lazysodium.interfaces.Box;
 import com.goterl.lazycode.lazysodium.interfaces.GenericHash;
+import com.goterl.lazycode.lazysodium.interfaces.PwHash;
 import com.goterl.lazycode.lazysodium.interfaces.SecretBox;
 import com.goterl.lazycode.lazysodium.utils.Key;
 import com.goterl.lazycode.lazysodium.utils.KeyPair;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 
+
+import java.nio.charset.StandardCharsets;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
@@ -89,11 +92,13 @@ public class Main {
                 genericHashStep1b();
                 genericHashStep2();
             }
+            if (parsed == 4) {
+                pwHashStep1();
+            }
         } catch (SodiumException e) {
             e.printStackTrace();
         }
     }
-
 
 
     private void symmetricKeyEncryptionStep1() throws SodiumException {
@@ -291,6 +296,106 @@ public class Main {
         logt("Hash 2: " + hashRandom2);
         logt("Hash 1 == Hash 2? " + hashRandom.equalsIgnoreCase(hashRandom2));
         log();
+    }
+
+
+    private void pwHashStep1() {
+        printSection("Running password hashing");
+        String pw = "superAwesomePassword";
+
+        printStep(
+                "1",
+                "Hashing a password",
+                "Attempting to hash a password '" + pw + "' using Argon 2."
+        );
+
+        try {
+            String hash = lazySodium.cryptoPwHashStr(pw, 2L, 65536);
+            log();
+            logt("Password hashing successful: " + hash);
+            log();
+        } catch (SodiumException e) {
+            e.printStackTrace();
+            log();
+            logt("Password hashing failed with exception: " + e.getMessage());
+            log();
+        }
+
+        pwHashStep2();
+    }
+
+    private void pwHashStep2() {
+        String pw = "lol";
+
+        printStep(
+                "2",
+                "Multiple password verification (Native)",
+                "Verifying password '" + pw + "' using Argon2 many times. " +
+                        "This may take a while..."
+        );
+
+        byte[] pwBytes = lazySodium.bytes(pw);
+
+        // Remember the terminating byte (null byte) at the end of the hash!
+        // As this is using the Native interface you must always remember
+        // to add that null byte yourself. Use the Lazy interface if you
+        // don't want to handle any of that (as shown in the next step).
+        byte[] hash = lazySodium.bytes(
+                "$argon2id$v=19$m=65536,t=2,p=1$ZrWMVZiMs4tvs0QwVc7T7A$L" +
+                "Il6XlgIZsuozRpC3bCe5ew8LEWgDQvQE8qwsZ9ISps\0"
+        );
+
+        log();
+        int i = 0;
+        while (i < 100) {
+            boolean result = lazySodium.cryptoPwHashStrVerify(hash, pwBytes, pwBytes.length);
+            logt("Password hashing verification: " + result);
+            i++;
+        }
+        log();
+
+        pwHashStep3();
+
+    }
+
+
+    private void pwHashStep3() {
+        String pw = "password";
+
+        printStep(
+                "2",
+                "Multiple password hashing (Lazy)",
+                "Hashing password '" + pw + "' using Argon2 lazy methods. " +
+                        "This also may take a while..."
+        );
+
+        log();
+        int i = 0;
+
+        // In the following while loop, we keep hashing the above password
+        // then we verify it. If at any point we aren't successful we log it.
+        while (i < 30) {
+            try {
+                // You can also remove the null bytes at the end of this hex hash
+                // using cryptoPwHashStrRemoveNulls instead of
+                // cryptoPwHashStr, but that is not recommended
+                // as Argon2 needs at least one null byte
+                // at the end.
+                String hash = lazySodium.cryptoPwHashStr(pw, 2, PwHash.MEMLIMIT_MIN);
+
+                // To get an Argon2 hash instead of a hex hash,
+                // lazySodium.str(lazySodium.toBinary(hash)) is one way to do that.
+
+                logt("Password hashing successful: " + hash);
+                boolean result = lazySodium.cryptoPwHashStrVerify(hash, pw);
+                logt("Password hashing verification: " + result);
+            } catch (SodiumException e) {
+                logt("Password hashing unsuccessful: " + e.getMessage());
+            }
+            i++;
+        }
+        log();
+
     }
 
 
