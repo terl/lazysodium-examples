@@ -1,4 +1,4 @@
-package com.goterl.lazycode.lazysodium.example.operation_acts;
+package com.goterl.lazycode.lazysodium.example.activities;
 
 import android.os.Bundle;
 import android.support.annotation.CallSuper;

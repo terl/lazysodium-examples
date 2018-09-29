@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.codetail.widget.RevealFrameLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+
+	<android.support.v4.widget.NestedScrollView
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+		<android.support.v7.widget.AppCompatTextView
+				android:text="Credits"
+				android:gravity="center_horizontal"
+				style="@style/Heading"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+
+
+		<android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+		                                        android:id="@+id/list"
+		                                        android:paddingStart="12dp"
+		                                        android:paddingEnd="12dp"
+		                                        android:paddingLeft="12dp"
+		                                        android:paddingRight="12dp"
+		                                        android:orientation="vertical"
+		                                        android:layout_height="wrap_content" />
+
+	</android.support.v4.widget.NestedScrollView>
+
+	<View android:layout_width="match_parent"
+	      android:layout_height="match_parent"
+	      android:visibility="gone"
+	      android:background="@color/colorAccent"
+	      android:id="@+id/overlay"/>
+
+</io.codetail.widget.RevealFrameLayout>

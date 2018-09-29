@@ -26,4 +26,15 @@
 	<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 	<style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
+	<style name="Heading">
+		<item name="android:layout_marginLeft">24dp</item>
+		<item name="android:layout_marginRight">24dp</item>
+		<item name="android:layout_marginTop">42dp</item>
+		<item name="android:layout_marginBottom">12dp</item>
+		<item name="android:gravity">center_horizontal</item>
+		<item name="android:textSize">24sp</item>
+		<item name="android:textColor">@color/colorPrimaryD2</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
 </resources>

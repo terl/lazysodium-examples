@@ -8,8 +8,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         multiDexEnabled true
-        versionCode 6
-        versionName "0.4.2"
+        versionCode 7
+        versionName "0.5.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,7 +20,7 @@ android {
     }
 }
 
-def androidSupport = "28.0.0-alpha3"
+def androidSupport = "28.0.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -31,10 +31,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation "com.goterl.lazycode:lazysodium-android:3.1.0@aar"
+    implementation "com.goterl.lazycode:lazysodium-android:3.3.0@aar"
     implementation "net.java.dev.jna:jna:4.5.1@aar"
     implementation ('com.github.ozodrukh.CircularReveal:circualreveal:2.1.0', {
         transitive = true
         exclude group: 'com.android.support'
     })
+
+    implementation 'com.github.florent37:diagonallayout:1.0.9'
 }

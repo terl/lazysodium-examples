@@ -1,4 +1,4 @@
-package com.goterl.lazycode.lazysodium.example.operation_acts;
+package com.goterl.lazycode.lazysodium.example.activities;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -7,20 +7,20 @@ import android.view.View;
 import android.widget.EditText;
 import com.goterl.lazycode.lazysodium.example.R;
 import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
-import com.goterl.lazycode.lazysodium.interfaces.PwHash;
+import com.goterl.lazycode.lazysodium.interfaces.GenericHash;
 
-public class PasswordHashActivity extends BaseActivity implements TextWatcher {
+public class GenericHashActivity extends BaseActivity implements TextWatcher {
 
 
     private EditText cipherTv;
     private View cipherLayout;
     private EditText etMessage;
-    private PwHash.Lazy pwHash;
+    private GenericHash.Lazy gh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password_hash);
+        setContentView(R.layout.activity_generic_hash);
         setupToolbar("Generic hash");
 
         cipherTv = findViewById(R.id.et_cipher);
@@ -29,7 +29,7 @@ public class PasswordHashActivity extends BaseActivity implements TextWatcher {
 
         etMessage.addTextChangedListener(this);
 
-        pwHash = (PwHash.Lazy) ls;
+        gh = (GenericHash.Lazy) ls;
 
     }
 
@@ -43,7 +43,7 @@ public class PasswordHashActivity extends BaseActivity implements TextWatcher {
     @Override
     public void afterTextChanged(Editable editable) {
         try {
-            String cipherText = pwHash.cryptoPwHashStrRemoveNulls(editable.toString(), PwHash.OPSLIMIT_MIN, PwHash.MEMLIMIT_MIN);
+            String cipherText = gh.cryptoGenericHash(editable.toString());
             cipherTv.setText(cipherText);
         } catch (SodiumException e) {
             e.printStackTrace();
