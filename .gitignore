@@ -36,7 +36,8 @@ Thumbs.db
 
 # IntelliJ  #
 ################
-.idea
+java/.idea
+android/.idea
 *.ipr
 *.iws
 *.iml

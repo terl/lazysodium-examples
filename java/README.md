@@ -18,6 +18,8 @@ Which will output a list of options, for example:
 1. Secret key.
 2. Public private key encryption.
 3. Generic hashing.
+4. Generic hashing.
+5. Signing
 ```
 
 Then use an option number from the above list to run the code that you want. For example:

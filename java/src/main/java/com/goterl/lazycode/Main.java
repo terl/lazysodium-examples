@@ -1,19 +1,15 @@
 package com.goterl.lazycode;
 
+import com.goterl.lazycode.lazysodium.LazySodium;
 import com.goterl.lazycode.lazysodium.LazySodiumJava;
 import com.goterl.lazycode.lazysodium.SodiumJava;
 import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
-import com.goterl.lazycode.lazysodium.interfaces.Box;
-import com.goterl.lazycode.lazysodium.interfaces.GenericHash;
-import com.goterl.lazycode.lazysodium.interfaces.PwHash;
-import com.goterl.lazycode.lazysodium.interfaces.SecretBox;
+import com.goterl.lazycode.lazysodium.interfaces.*;
 import com.goterl.lazycode.lazysodium.utils.Key;
 import com.goterl.lazycode.lazysodium.utils.KeyPair;
+import com.sun.jna.NativeLong;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
-
-
-import java.nio.charset.StandardCharsets;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
@@ -35,7 +31,7 @@ public class Main {
                 Integer parsed = Integer.parseInt(arg1);
                 Main main = new Main(parsed);
                 main.run();
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 AnsiConsole.system_err.println(
                         "Error: " + arg1 + " is not a valid number. " +
                         "Please provide a number of the operation you want to perform.");
@@ -65,6 +61,8 @@ public class Main {
         log("1. Secret key: Perform encryption using a symmetric key.");
         log("2. Public key: Encryption using public-private key.");
         log("3. Generic hashing: Hash arbitrarily.");
+        log("4. Password hashing: Password hash.");
+        log("5. Sign (detached): Sign a message in detached mode.");
         log();
     }
 
@@ -95,9 +93,75 @@ public class Main {
             if (parsed == 4) {
                 pwHashStep1();
             }
+            if (parsed == 5) {
+                sign();
+                signWithNonRandomKeys();
+            }
         } catch (SodiumException e) {
             e.printStackTrace();
         }
+    }
+
+    private void sign() throws SodiumException {
+        printSection("Running sign detached");
+        String msg = "This message needs to be signed";
+
+
+        KeyPair kp = lazySodium.cryptoSignKeypair();
+        Key pk = kp.getPublicKey();
+        Key sk = kp.getSecretKey();
+
+        if (!lazySodium.cryptoSignKeypair(pk.getAsBytes(), sk.getAsBytes())) {
+            throw new SodiumException("Could not generate a signing keypair.");
+        }
+
+        printStep(
+                "1",
+                "Signing a message",
+                "We will be using the random secret key '" + sk.getAsHexString() + "' and will be " +
+                        "signing the message '" + msg + "'."
+        );
+
+        byte[] messageBytes = lazySodium.bytes(msg);
+        byte[] skBytes = sk.getAsBytes();
+        byte[] signatureBytes = new byte[Sign.BYTES];
+
+        lazySodium.cryptoSignDetached(signatureBytes, null, messageBytes, messageBytes.length, skBytes);
+        boolean v = lazySodium.cryptoSignVerifyDetached(signatureBytes, messageBytes, messageBytes.length, pk.getAsBytes());
+
+        log();
+        logt("The signed message is " + LazySodium.toHex(signatureBytes) + ".");
+        logt("Verifying the signed message outputs true: " + v + ".");
+
+    }
+
+    private void signWithNonRandomKeys() throws SodiumException {
+        String msg = "Sign this";
+        Key pk = Key.fromPlainString("edpkuBknW28nW72KG6RoHtYW7p12T6GKc7nAbwYX5m8Wd9sDVC9yav8888888888");
+        Key sk = Key.fromPlainString("edsk3gUfUPyBSfrS9CCgmCiQsTCHGkviBDusMxDJstFtojtc1zcpsh8888888888");
+
+        log();
+
+        printStep(
+                "2",
+                "Signing a message (non-random)",
+                "We will be using the non-random secret key '" + sk.getAsHexString() + "' and will be " +
+                        "signing the message '" + msg + "'."
+        );
+
+
+
+        if (!lazySodium.cryptoSignKeypair(pk.getAsBytes(), sk.getAsBytes())) {
+            throw new SodiumException("Could not generate a signing keypair.");
+        }
+
+        String signed = lazySodium.cryptoSignDetached(msg, sk);
+        boolean verification = lazySodium.cryptoSignVerifyDetached(signed, msg, pk);
+
+        log();
+        logt("The signed message is " + signed + ".");
+        logt("Verifying the signed message outputs true: " + verification + ".");
+
     }
 
 
@@ -310,7 +374,7 @@ public class Main {
         );
 
         try {
-            String hash = lazySodium.cryptoPwHashStr(pw, 2L, 65536);
+            String hash = lazySodium.cryptoPwHashStr(pw, 2L, new NativeLong(65536));
             log();
             logt("Password hashing successful: " + hash);
             log();

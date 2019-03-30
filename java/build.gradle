@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.goterl.lazycode'
-version '1.0'
+version '1.1'
 
 sourceCompatibility = 1.8
 mainClassName = "com.goterl.lazycode.Main"
@@ -12,9 +12,7 @@ mainClassName = "com.goterl.lazycode.Main"
 
 repositories {
     mavenCentral()
-    maven {
-        url  "https://dl.bintray.com/terl/lazysodium-maven"
-    }
+    jcenter()
 }
 
 dependencies {
@@ -22,7 +20,7 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    implementation "com.goterl.lazycode:lazysodium-java:3.0.0"
-    implementation "net.java.dev.jna:jna:4.5.1"
+    implementation "com.goterl.lazycode:lazysodium-java:3.6.0"
+    implementation "net.java.dev.jna:jna:5.2.0"
 
 }

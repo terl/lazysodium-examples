@@ -3,11 +3,17 @@ package com.goterl.lazycode.lazysodium.example.activities;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import com.goterl.lazycode.lazysodium.LazySodiumAndroid;
+import com.goterl.lazycode.lazysodium.SodiumAndroid;
 import com.goterl.lazycode.lazysodium.example.R;
 import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
+import com.goterl.lazycode.lazysodium.interfaces.Auth;
 import com.goterl.lazycode.lazysodium.interfaces.GenericHash;
+import com.goterl.lazycode.lazysodium.interfaces.PwHash;
+import com.goterl.lazycode.lazysodium.utils.Key;
 
 public class GenericHashActivity extends BaseActivity implements TextWatcher {
 
@@ -31,6 +37,32 @@ public class GenericHashActivity extends BaseActivity implements TextWatcher {
 
         gh = (GenericHash.Lazy) ls;
 
+        LazySodiumAndroid ls = new LazySodiumAndroid(new SodiumAndroid());
+        byte[] salt = ls.randomBytesBuf(PwHash.SALTBYTES);
+
+        byte[] outputHash = ls.randomBytesBuf(32);
+        int outputHashLen = outputHash.length;
+
+        Log.e("Test", ls.str(outputHash));
+        Log.e("Test", ls.toHexStr(outputHash));
+
+        byte[] password = ls.bytes("123456");
+        int passwordLen = password.length;
+
+        int res = ls.getSodium().crypto_pwhash(outputHash,
+                outputHashLen,
+                password,
+                passwordLen,
+                salt,
+                PwHash.OPSLIMIT_MIN,
+                PwHash.MEMLIMIT_MIN,
+                PwHash.Alg.getDefault().getValue());
+        if (res == 0) {
+            Log.e("S", "Successful hashing.");
+        }
+
+        Log.e("Test", ls.str(outputHash));
+        Log.e("Test", ls.toHexStr(outputHash));
     }
 
 

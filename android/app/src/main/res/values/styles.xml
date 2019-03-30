@@ -6,8 +6,8 @@
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryD2</item>
 		<item name="colorAccent">@color/colorAccentL3</item>
-		<item name="android:fontFamily">@font/vision_family</item>
-		<item name="fontFamily">@font/vision_family</item>
+		<item name="android:fontFamily">@font/vision</item>
+		<item name="fontFamily">@font/vision</item>
 		<item name="android:lineSpacingMultiplier">1.4</item>
 		<item name="android:textColor">@color/snow</item>
 	</style>
