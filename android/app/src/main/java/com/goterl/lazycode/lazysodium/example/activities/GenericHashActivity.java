@@ -55,7 +55,7 @@ public class GenericHashActivity extends BaseActivity implements TextWatcher {
                 passwordLen,
                 salt,
                 PwHash.OPSLIMIT_MIN,
-                PwHash.MEMLIMIT_MIN,
+                PwHash.MEMLIMIT_INTERACTIVE,
                 PwHash.Alg.getDefault().getValue());
         if (res == 0) {
             Log.e("S", "Successful hashing.");
