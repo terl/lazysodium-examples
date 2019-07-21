@@ -12,7 +12,7 @@
               android:id="@+id/parent"
 	          android:layout_height="wrap_content">
 
-		<android.support.v7.widget.Toolbar android:layout_width="match_parent"
+		<androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
 		                                   android:id="@+id/toolbar"
 		                                   android:background="@color/colorPrimary"
 		                                   android:layout_height="?android:actionBarSize" />
@@ -53,35 +53,35 @@
 			              android:orientation="vertical"
 			              android:layout_marginTop="32dp">
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="16sp"
 						android:textColor="@color/colorAccentL3"
 						android:text="Your keypair" />
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:layout_marginTop="6dp"
 						android:text="Private key"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="14sp" />
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:id="@+id/tv_your_private_key"
 						android:layout_marginTop="6dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="12sp" />
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:layout_marginTop="8dp"
 						android:text="Public key"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="14sp" />
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:id="@+id/tv_your_public_key"
 						android:layout_marginTop="6dp"
 						android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
 			              android:orientation="vertical"
 			              android:layout_marginTop="32dp">
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="16sp"
@@ -106,14 +106,14 @@
 
 
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:layout_marginTop="6dp"
 						android:text="Private key"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="14sp" />
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:id="@+id/tv_bob_private_key"
 						android:layout_marginTop="6dp"
 						android:layout_width="wrap_content"
@@ -121,14 +121,14 @@
 						android:textSize="12sp" />
 
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:layout_marginTop="8dp"
 						android:text="Public key"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textSize="14sp" />
 
-				<android.support.v7.widget.AppCompatTextView
+				<androidx.appcompat.widget.AppCompatTextView
 						android:id="@+id/tv_bob_public_key"
 						android:layout_marginTop="6dp"
 						android:layout_width="wrap_content"

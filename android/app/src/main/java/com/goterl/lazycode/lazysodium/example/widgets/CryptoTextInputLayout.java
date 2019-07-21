@@ -2,9 +2,9 @@ package com.goterl.lazycode.lazysodium.example.widgets;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
+import com.google.android.material.textfield.TextInputLayout;
 import com.goterl.lazycode.lazysodium.example.R;
 
 public class CryptoTextInputLayout extends TextInputLayout {

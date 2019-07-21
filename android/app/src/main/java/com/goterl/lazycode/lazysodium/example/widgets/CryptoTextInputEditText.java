@@ -2,9 +2,9 @@ package com.goterl.lazycode.lazysodium.example.widgets;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.support.design.widget.TextInputEditText;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
+import com.google.android.material.textfield.TextInputEditText;
 import com.goterl.lazycode.lazysodium.example.R;
 
 public class CryptoTextInputEditText extends TextInputEditText {
@@ -30,6 +30,7 @@ public class CryptoTextInputEditText extends TextInputEditText {
         setTextColor(hintColor);
         setTextSize(16);
         setBackground(null);
+        setBackgroundColor(getResources().getColor(android.R.color.transparent));
         setPadding(getPaddingLeft(), topPadding, getPaddingRight(), getPaddingBottom());
     }
 

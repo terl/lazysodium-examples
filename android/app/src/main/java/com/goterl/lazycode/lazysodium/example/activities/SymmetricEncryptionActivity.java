@@ -1,11 +1,11 @@
 package com.goterl.lazycode.lazysodium.example.activities;
 
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import androidx.annotation.CallSuper;
 import com.goterl.lazycode.lazysodium.example.R;
 import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
 import com.goterl.lazycode.lazysodium.interfaces.SecretBox;
