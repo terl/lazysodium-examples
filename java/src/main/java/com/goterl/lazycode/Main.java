@@ -126,7 +126,7 @@ public class Main {
         byte[] skBytes = sk.getAsBytes();
         byte[] signatureBytes = new byte[Sign.BYTES];
 
-        lazySodium.cryptoSignDetached(signatureBytes, null, messageBytes, messageBytes.length, skBytes);
+        lazySodium.cryptoSignDetached(signatureBytes, messageBytes, messageBytes.length, skBytes);
         boolean v = lazySodium.cryptoSignVerifyDetached(signatureBytes, messageBytes, messageBytes.length, pk.getAsBytes());
 
         log();
