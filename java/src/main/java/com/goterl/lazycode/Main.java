@@ -7,6 +7,7 @@ import com.goterl.lazycode.lazysodium.exceptions.SodiumException;
 import com.goterl.lazycode.lazysodium.interfaces.*;
 import com.goterl.lazycode.lazysodium.utils.Key;
 import com.goterl.lazycode.lazysodium.utils.KeyPair;
+import com.goterl.lazycode.lazysodium.utils.LibraryLoader;
 import com.sun.jna.NativeLong;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
@@ -73,9 +74,8 @@ public class Main {
 
     public Main(Integer parsed) {
         this.parsed = parsed;
-        lazySodium = new LazySodiumJava(new SodiumJava());
+        lazySodium = new LazySodiumJava(new SodiumJava(LibraryLoader.Mode.BUNDLED_ONLY));
     }
-
 
     public void run() {
         try {
@@ -205,9 +205,6 @@ public class Main {
         logt("It should equal the message we encrypted in step 1.");
 
     }
-
-
-
 
 
     private void publicPrivateKeyEncryptionStep1() throws SodiumException {

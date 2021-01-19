@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.goterl.lazycode.lazysodium.example"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         multiDexEnabled true
         versionCode 9
@@ -27,16 +27,16 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "androidx.appcompat:appcompat:1.0.0-beta01"
-    implementation "com.google.android.material:material:1.1.0-alpha08"
+    implementation "androidx.appcompat:appcompat:1.2.0-beta01"
+    implementation "com.google.android.material:material:1.2.0-alpha05"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    implementation "com.goterl.lazycode:lazysodium-android:4.0.0@aar"
-    implementation "net.java.dev.jna:jna:5.4.0@aar"
+    implementation "com.goterl.lazycode:lazysodium-android:4.1.1@aar"
+    implementation "net.java.dev.jna:jna:5.5.0@aar"
     implementation ('com.github.ozodrukh.CircularReveal:circualreveal:2.1.0', {
         transitive = true
         exclude group: 'com.android.support'
